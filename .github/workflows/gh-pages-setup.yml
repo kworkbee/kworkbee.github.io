@@ -1,0 +1,16 @@
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Build and Deploy
+      uses: rreichel3/vuepress-github-actions-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BUILD_DIR: docs/.vuepress/dist
+        BUILD_SCRIPT: npm install && npm run docs:build
+        PAGES_CNAME: about.g1tommy.me
