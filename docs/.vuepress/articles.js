@@ -1,4 +1,13 @@
-exports.children = [
+exports.sidebar = [
+    {
+        text: 'Backend',
+        children: [
+            { text: 'Spring',
+              children: [
+                  { text: 'Security Architecture / Code Analysis', link: '/backend/spring/2022/05/31/spring-security-architecture-code-analysis' }
+              ] },
+        ]
+    },
     {
         text: 'DevOps',
         children: [
@@ -8,13 +17,4 @@ exports.children = [
             }
         ]
     },
-    {
-        text: 'Backend',
-        children: [
-            { text: 'Spring',
-              children: [
-                  { text: 'Security Architecture / Code Analysis', link: '/backend/spring/2022/05/31/spring-security-architecture-code-analysis' }
-              ] },
-        ]
-    }
 ]

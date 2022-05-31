@@ -1,7 +1,7 @@
 const { googleAnalyticsPlugin } = require("@vuepress/plugin-google-analytics");
 const { defaultTheme } = require("@vuepress/theme-default");
 
-const { children } = require('./articles');
+const { sidebar } = require('./articles');
 
 module.exports = {
     title: 'G1',
@@ -55,12 +55,6 @@ module.exports = {
                 link: 'https://about.g1tommy.me/diary'
             },
         ],
-        sidebar: [
-            {
-                text: 'Articles',
-                link: '/',
-                children,
-            }
-        ],
+        sidebar,
     })
 }
