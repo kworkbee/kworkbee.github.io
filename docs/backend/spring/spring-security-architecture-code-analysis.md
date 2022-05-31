@@ -254,6 +254,46 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 ![Authorization](./images/authorization.png)
 
-::: warning ON Writing
-작성 중입니다.
-:::
+인증된 사용자가 특정 리소스에 접근할 때 접근 자격이 있는지 증명하는 것이 인가입니다.
+Spring Security는 다음과 같이 3가지 권한 계층을 지원합니다.
+
+1. 웹 계층
+  - URL 요청에 따른 메뉴(화면) 단위 (e.g. `/settings`에 접근할 때 해당 리소스에 설정된 권한 `ROLE_ADMIN` 그리고 인증된 주체가 가진 권한을 비교)
+
+2. 서비스 계층
+  - 메서드 단위 (e.g. `user()` 메서드에 접근할 때 해당 메서드에 설정된 권한과 인증된 주체가 가진 권한을 비교)
+  
+3. 도메인 계층 (ACL)
+  - 객체 단위 (e.g. 객체 `user`를 핸들링하려 할 때 도메인에 설정된 권한과 인증된 주체가 가진 권한을 비교)
+  
+`FilterSecurityInterceptor`가 인가 처리를 담당하는 필터로 Spring Security Filter Chain의 마지막에 위치하고 있습니다. 인증된 사용자에 대해 특정 요청의 승인 여부를 결정합니다.
+```java
+// AbstractSecurityInterceptor.java (Parent of FilterSecurityInterceptor)
+
+private void attemptAuthorization(Object object, Collection<ConfigAttribute> attributes,
+			Authentication authenticated) {
+  try {
+    this.accessDecisionManager.decide(authenticated, object, attributes);
+  }
+  catch (AccessDeniedException ex) {
+    if (this.logger.isTraceEnabled()) {
+      this.logger.trace(LogMessage.format("Failed to authorize %s with attributes %s using %s", object,
+          attributes, this.accessDecisionManager));
+    }
+    else if (this.logger.isDebugEnabled()) {
+      this.logger.debug(LogMessage.format("Failed to authorize %s with attributes %s", object, attributes));
+    }
+    publishEvent(new AuthorizationFailureEvent(object, attributes, authenticated, ex));
+    throw ex;
+  }
+}
+```
+
+- 해당 필터는 HTTP 리소스 보안을 처리하는 필터로써 URL 방식으로 접근하는 경우 동작합니다.
+
+- `Authentication` 객체 없이 보호된 리소스에 접근하면 `AuthenticationException`을 발생시킵니다.
+- 인증되었으나 접근 가능한 권한이 없는 경우에는 `AccessDeniedException`을 발생시킵니다.
+- 권한 처리를 `AccessDecisionManager`에 위임합니다.
+
+- `AccessDecisionManager`는 내부적으로 `AccessDecisionVoter`의 Voting 전략에 따라 접근 가능여부를 판단합니다. (승인(`granted`) / 거부(`denied`) / 보류 (`abstained`))
+  - 기본 전략은 `AffirmativeBased`로, 하나 이상의 Voter가 승인하는 경우 인가를 승인합니다.
