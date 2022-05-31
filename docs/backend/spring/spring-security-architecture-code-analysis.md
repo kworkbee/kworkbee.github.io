@@ -63,7 +63,7 @@ public void doFilter(ServletRequest request, ServletResponse response, FilterCha
 
 - `FilterChainProxy`에 추가되는 `Filter`들은 순서가 있으며 사용자 요청이 각 `Filter`를 순서대로 거쳐가므로 중요하다.
 
-## Configuration
+### Configuration
 
 `WebSecurityConfigurerAdapter`를 상속받은 클래스에 `@EnableWebSecurity` annotation을 포함시키면 자동으로 `springSecurityFilterChain`이 포함됩니다.
 
