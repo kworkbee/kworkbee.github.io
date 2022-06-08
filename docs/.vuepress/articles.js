@@ -6,6 +6,7 @@ exports.sidebar = [
               children: [
                   { text: 'Security Architecture / Code Analysis', link: '/backend/spring/2022/05/31/spring-security-architecture-code-analysis' },
                   { text: 'R2DBC ConnectionFactory', link: '/backend/spring/2022/06/09/r2dbc-connectionfactory' },
+                  { text: 'Gradle Docker Compose Plugin', link: '/backend/spring/2022/06/10/gradle-docker-compose-plugin' },
               ] },
         ]
     },
