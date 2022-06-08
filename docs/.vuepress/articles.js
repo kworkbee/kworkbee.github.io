@@ -4,7 +4,8 @@ exports.sidebar = [
         children: [
             { text: 'Spring',
               children: [
-                  { text: 'Security Architecture / Code Analysis', link: '/backend/spring/2022/05/31/spring-security-architecture-code-analysis' }
+                  { text: 'Security Architecture / Code Analysis', link: '/backend/spring/2022/05/31/spring-security-architecture-code-analysis' },
+                  { text: 'R2DBC ConnectionFactory', link: '/backend/spring/2022/06/09/r2dbc-connectionfactory' },
               ] },
         ]
     },
