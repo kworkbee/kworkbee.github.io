@@ -8,6 +8,7 @@ exports.sidebar = [
                   { text: 'R2DBC ConnectionFactory', link: '/backend/spring/2022/06/09/r2dbc-connectionfactory' },
                   { text: 'Gradle Docker Compose Plugin', link: '/backend/spring/2022/06/10/gradle-docker-compose-plugin' },
                   { text: 'Spring Custom Annotation', link: '/backend/spring/2022/06/22/spring-custom-annotation' },
+                  { text: 'Gradle Dependency Configurations', link: '/backend/spring/2022/07/17/gradle-dependency-configurations' },
               ] },
         ]
     },
