@@ -17,35 +17,31 @@ export default defineConfig({
         name: 'apple-mobile-web-app-status-bar-style',
         content: 'black'
     }],
+    ['meta', {
+        name: 'google-adsense-account',
+        content: 'ca-pub-8044968030532296'
+    }],
+    ['script', {
+      async: '',
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8044968030532296",
+      crossorigin: "anonymous"
+    }],
+    ['script', {
+      async: '',
+      src: "https://www.googletagmanager.com/gtag/js?id=G-G7R3ZWQ8CQ"
+    }],
+    ['script', {}, "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-G7R3ZWQ8CQ');"]
   ],
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog/' }
+      { text: 'Blog', link: '/' }
     ],
 
     sidebar: {
-      '/blog': [
+      '/': [
         {
             text: 'Backend',
             items: [
-                { text: 'Spring',
-                  items: [
-                      { text: 'Security Architecture / Code Analysis', link: '/blog/backend/spring/spring-security-architecture-code-analysis' },
-                      { text: 'R2DBC ConnectionFactory', link: '/blog/backend/spring/r2dbc-connectionfactory' },
-                      { text: 'Gradle Docker Compose Plugin', link: '/blog/backend/spring/gradle-docker-compose-plugin' },
-                      { text: 'Spring Custom Annotation', link: '/blog/backend/spring/spring-custom-annotation' },
-                      { text: 'Gradle Dependency Configurations', link: '/blog/backend/spring/gradle-dependency-configurations' },
-                  ] },
-            ]
-        },
-        {
-            text: 'DevOps',
-            items: [
-                {
-                    text: 'Multi-Architecture Supported Docker Builds',
-                    link: '/blog/devops/multi-architecture-supported-docker-builds'
-                }
             ]
         },
       ]
@@ -57,8 +53,12 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'G1, A Junior Platform Engineer, Aims for "Generalizing Specialist"',
-      copyright: 'Copyright © 2023 G1'
+      message: 'G1, A Junior Platform Engineer, Aim for "Generalizing Specialist"',
+      copyright: 'Copyright © 2024 G1'
+    },
+
+    search: {
+      provider: 'local'
     }
   },
   lastUpdated: true
