@@ -40,8 +40,9 @@ export default defineConfig({
     sidebar: {
       '/': [
         {
-            text: 'Backend',
+            text: '기록',
             items: [
+              { text: "Boot 업그레이드 후 시간 데이터 누락 이슈", link: "/blog/time-data-eliminated-when-upgrade-boot" },
             ]
         },
       ]
